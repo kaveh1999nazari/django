@@ -1,0 +1,27 @@
+# first backup of your sqllite3:
+python -Xutf8 manage.py dumpdata --indent=2 --output=mysite_backup.json
+
+#then download PostgreSQL and install it
+#open pgadmin4 and create a new server by your project name in Django
+# in vscode, open your project then go to setting.py add this in Database:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "your_data_base_name_project",
+        'USER': "postgres",
+        'PASSWORD': "yourpassword",
+        'HOST': "localhost",
+        'PORT': "",
+    }
+}
+# so Do not forget to migrate it!, python manage.py migrate
+# then, pip install psycopg2
+# then open your shell view:
+python manage.py shell
+from django.contrib.contenttypes.models import ContentType
+ContentType.objects.all().delete()
+exit()
+# and python manage.py loaddata mysite_backup.json
+so run your server and see you have your data!
+
+##MAKE BY KAVEH NAZARI
