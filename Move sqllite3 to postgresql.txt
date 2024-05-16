@@ -3,7 +3,11 @@ python -Xutf8 manage.py dumpdata --indent=2 --output=mysite_backup.json
 
 #then download PostgreSQL and install it
 #open pgadmin4 and create a new server by your project name in Django
-# in vscode, open your project then go to setting.py add this in Database:
+# in vscode, open your project then go to setting.py 
+add this in your installed apps:
+'django.contrib.postgres'
+then :
+then add this in Database:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
